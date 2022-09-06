@@ -1,0 +1,46 @@
+#:import XCamera kivy.garden.xcamera.XCamera
+<MyLayout>
+    FloatLayout:
+        orientation: 'vertical'
+        size: root.width, root.height
+
+        XCamera:
+            id: xcamera
+            play: True
+            on_picture_taken: app.picture_taken(*args)
+
+        Label:
+            id: my_label
+            text:'Hello Hoang'
+            font_size: 14
+            text_size: root.width-20, root.height-20
+            valign: 'top'
+            color: 255,0,0       
+
+
+
+        # FloatLayout:
+
+        #     size_hint: 1, None
+        #     Image:
+        #         source: '2022-08-19 00.55.37.jpg'
+            
+
+
+        BoxLayout:
+            # size: '200dp','200dp'
+            orientation: 'horizontal'
+            size_hint: 1, None
+            height: sp(50)
+
+            
+            Button:
+                text: 'Set landscape'
+                on_release: xcamera.force_landscape()
+            Button:
+                text: 'Restore orientation'
+                on_release: xcamera.restore_orientation()
+            Button:
+                text: " Ấn để nhận dạng"
+                on_press: root.hello_on()
+                
